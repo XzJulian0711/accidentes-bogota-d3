@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accidentes de Transporte en Bogotá | Dashboard Interactivo</title>
+    
+    <!-- Tipografía moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <!-- Nuestros estilos -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title">
+                <span class="emoji">🚗</span>
+                Accidentes de Transporte en Bogotá
+            </h1>
+            <p class="subtitle">Análisis interactivo del periodo 2015–2025</p>
+            <p class="source">Fuente: Datos Abiertos de Bogotá</p>
+        </div>
+    </header>
+
+    <!-- LOADING -->
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Cargando datos...</p>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL (se muestra cuando cargan los datos) -->
+    <main id="main" class="container hidden">
+
+        <!-- FILTROS -->
+        <section class="filters">
+            <h2 class="section-title">🎛️ Filtros</h2>
+            <div class="filters-grid">
+                <div class="filter">
+                    <label for="year-range">Rango de años</label>
+                    <div class="range-container">
+                        <span id="year-start">2015</span>
+                        <input type="range" id="year-range-start" min="2015" max="2025" value="2015">
+                        <span>–</span>
+                        <input type="range" id="year-range-end" min="2015" max="2025" value="2025">
+                        <span id="year-end">2025</span>
+                    </div>
+                </div>
+                <div class="filter">
+                    <label for="sex-filter">Sexo</label>
+                    <select id="sex-filter">
+                        <option value="todos">Todos</option>
+                        <option value="Hombre">Hombre</option>
+                        <option value="Mujer">Mujer</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <label for="type-filter">Tipo de accidente</label>
+                    <select id="type-filter">
+                        <option value="todos">Todos</option>
+                    </select>
+                </div>
+                <div class="filter-info">
+                    <span class="records-label">Registros filtrados:</span>
+                    <span id="record-count" class="records-count">0</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPIs -->
+        <section class="kpis">
+            <div class="kpi">
+                <div class="kpi-label">Total accidentes</div>
+                <div id="kpi-total" class="kpi-value">—</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">Año pico</div>
+                <div id="kpi-year" class="kpi-value">—</div>
+                <div id="kpi-year-count" class="kpi-delta">—</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">Localidad crítica</div>
+                <div id="kpi-locality" class="kpi-value">—</div>
+                <div id="kpi-locality-count" class="kpi-delta">—</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">Tipo predominante</div>
+                <div id="kpi-type" class="kpi-value">—</div>
+            </div>
+        </section>
+
+        <!-- INSIGHT 1: Evolución temporal -->
+        <section class="insight">
+            <h2 class="insight-title">📈 Insight 1: La pandemia marcó una caída histórica, pero el rebote ha sido explosivo</h2>
+            <div id="chart-temporal" class="chart-container"></div>
+            <p class="insight-description">
+                En 2020 los accidentes cayeron drásticamente por las restricciones de movilidad. 
+                Desde 2022 la tendencia superó los niveles pre-pandemia y 2024 fue el pico histórico.
+            </p>
+        </section>
+
+        <!-- INSIGHT 2: Localidades -->
+        <section class="insight">
+            <h2 class="insight-title">🗺️ Insight 2: Kennedy, Engativá y Suba concentran la mayoría de accidentes localizados</h2>
+            <div id="chart-localidades" class="chart-container"></div>
+            <p class="insight-description">
+                Tres localidades reúnen más del 40% de los accidentes con ubicación específica.
+                Esto sugiere focalizar políticas de seguridad vial en estas zonas.
+            </p>
+        </section>
+
+        <!-- INSIGHT 3: Tipos de accidente -->
+        <section class="insight">
+            <h2 class="insight-title">🚗 Insight 3: Choque y atropello representan casi el 90% de los accidentes</h2>
+            <div id="chart-tipos" class="chart-container"></div>
+            <p class="insight-description">
+                Dos categorías dominan: choques entre vehículos y atropellos de peatones.
+                La prevención debe focalizarse en estas dos dinámicas.
+            </p>
+        </section>
+
+        <!-- INSIGHT 4: Demográfico -->
+        <section class="insight">
+            <h2 class="insight-title">👥 Insight 4: Hombres adultos (29-59 años) son la mayoría de víctimas</h2>
+            <div class="chart-row">
+                <div id="chart-sexo" class="chart-container chart-half"></div>
+                <div id="chart-edad" class="chart-container chart-half"></div>
+            </div>
+            <p class="insight-description">
+                Marcada asimetría de género (~70% hombres) y concentración en población 
+                económicamente activa, revelando patrones de exposición vinculados a movilidad laboral.
+            </p>
+        </section>
+
+        <!-- INSIGHT 5: Causas -->
+        <section class="insight">
+            <h2 class="insight-title">⚠️ Insight 5: La desobediencia de señales es la principal causa identificada</h2>
+            <div id="chart-causas" class="chart-container"></div>
+            <p class="insight-description">
+                Entre los casos con causa registrada, desobedecer señales lidera con gran diferencia,
+                seguido por exceso de velocidad. Ambas son causas prevenibles.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>Proyecto 2 · Herramientas y Visualización de Datos · Fundación Universitaria Los Libertadores</p>
+    </footer>
+
+    <!-- Tooltip global -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <!-- Nuestro JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>
