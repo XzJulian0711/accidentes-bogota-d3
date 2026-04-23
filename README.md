@@ -1,12 +1,12 @@
-# 🚗 Accidentes de Transporte en Bogotá — Dashboard D3.js
+#  Accidentes de Transporte en Bogotá — Dashboard D3.js
 
 Dashboard interactivo construido con **D3.js, HTML y CSS** para explorar y visualizar los patrones, hallazgos e insights de los accidentes de transporte reportados en Bogotá durante el periodo **2015-2025**. Forma parte del Proyecto 2 del curso **Herramientas y Visualización de Datos** de la Fundación Universitaria Los Libertadores.
 
-## 🌐 App desplegada
+##  App desplegada
 
-👉 **[Ver dashboard en vivo](https://xzjulian0711.github.io/accidentes-bogota-d3/)**
+ **[Ver dashboard en vivo](https://xzjulian0711.github.io/accidentes-bogota-d3/)**
 
-## 📊 Descripción
+##  Descripción
 
 Este dashboard presenta un análisis visual interactivo de accidentes de transporte en Bogotá. A diferencia de las otras dos aplicaciones del proyecto (Streamlit y Shiny), esta versión está construida completamente con tecnologías web nativas (HTML, CSS, JavaScript puro + D3.js), sin depender de ningún framework backend. Eso la hace extremadamente portable, embebible en cualquier sitio web, y de carga ultra-rápida.
 
@@ -20,7 +20,7 @@ Este dashboard presenta un análisis visual interactivo de accidentes de transpo
 - **Diseño responsive** (adaptado a móvil y desktop)
 - **Paletas de color** cuidadas según los principios del curso
 
-## 📁 Dataset
+## Dataset
 
 - **Fuente:** Datos Abiertos Bogotá — Secretaría Distrital de Gobierno
 - **URL original:** [datosabiertos.bogota.gov.co](https://datosabiertos.bogota.gov.co/)
@@ -28,7 +28,7 @@ Este dashboard presenta un análisis visual interactivo de accidentes de transpo
 - **Dimensiones:** 12,386 registros × 14 variables (tras limpieza)
 - **Preprocesamiento aplicado:** normalización de nombres de columnas, reemplazo de "Bogotá" por "Sin localidad específica" en la columna localidad, creación de columnas auxiliares (`mes_num`, `tipo_dia`), eliminación de columnas no relevantes para el análisis.
 
-## 🔍 Hallazgos principales
+## Hallazgos principales
 
 1. **La pandemia marcó una caída histórica, pero el rebote ha sido explosivo.** En 2020 los accidentes cayeron a 808 casos (~25% por debajo del promedio). Desde 2022 la tendencia superó los niveles pre-pandemia y 2024 registró el pico histórico con 1,330 casos.
 
@@ -40,7 +40,7 @@ Este dashboard presenta un análisis visual interactivo de accidentes de transpo
 
 5. **La desobediencia de señales es la principal causa identificable.** Entre los casos con causa registrada, desobedecer señales lidera con ~2,300 casos, seguido de exceso de velocidad con ~1,260. Ambas son causas prevenibles ligadas al comportamiento del conductor.
 
-## 📈 Visualizaciones implementadas
+##  Visualizaciones implementadas
 
 1. **Gráfico de línea y área temporal** — Muestra la evolución anual de accidentes con marcador de pandemia y puntos interactivos con tooltip. Tipo: *evolución temporal*.
 
@@ -54,7 +54,7 @@ Este dashboard presenta un análisis visual interactivo de accidentes de transpo
 
 Adicionalmente se incluyen **4 KPIs ejecutivos** (total de accidentes, año pico, localidad crítica, tipo predominante) que se actualizan dinámicamente con cada filtro aplicado.
 
-## 🛠️ Tecnologías utilizadas
+##  Tecnologías utilizadas
 
 - **Framework:** D3.js v7 (cargado desde CDN)
 - **Lenguajes:** JavaScript (ES6+), HTML5, CSS3
@@ -63,7 +63,7 @@ Adicionalmente se incluyen **4 KPIs ejecutivos** (total de accidentes, año pico
 - **Plataforma de despliegue:** GitHub Pages
 - **Control de versiones:** Git + GitHub
 
-## 💻 Instalación y ejecución local
+##  Instalación y ejecución local
 
 ### Requisitos previos
 
@@ -92,7 +92,7 @@ python -m http.server 8000
 
 Luego abrir en el navegador: `http://localhost:8000/`
 
-## 📂 Estructura del proyecto
+##  Estructura del proyecto
 
 accidentes-bogota-d3/
 ├── index.html                          # Estructura HTML del dashboard
@@ -104,7 +104,7 @@ accidentes-bogota-d3/
 └── data/
 └── accidentes_bogota_limpio.csv    # Dataset procesado
 
-## 🎨 Principios de diseño aplicados
+##  Principios de diseño aplicados
 
 - **Unidad 1 (Fundamentos):** elección cuidada del tipo de gráfico según la naturaleza de los datos — barras horizontales para rankings categóricos, líneas para series temporales, donut para composición, barras verticales para distribuciones ordinales.
 - **Unidad 2 (Color):** uso estratégico de paletas:
@@ -114,13 +114,13 @@ accidentes-bogota-d3/
   - *Colores de acento* (rojo) para resaltar hitos importantes (inicio de pandemia)
 - **Unidad 3 (Diseño):** alto data-ink ratio (ejes sin bordes, grid tenue, sin decoraciones), jerarquía visual marcada (títulos grandes con hallazgo, insights subrayados), espaciado consistente mediante variables CSS, tipografía moderna (Inter), tooltips profesionales, animaciones sutiles para guiar la atención.
 
-## 🚀 Despliegue
+##  Despliegue
 
 **URL en producción:** [https://xzjulian0711.github.io/accidentes-bogota-d3/](https://xzjulian0711.github.io/accidentes-bogota-d3/)
 
 Desplegado automáticamente en **GitHub Pages** con conexión al repositorio. Cada push a la rama `main` actualiza el sitio público en pocos minutos.
 
-## 🔗 Proyecto relacionado
+##  Proyecto relacionado
 
 Este dashboard forma parte de un proyecto integrado de tres aplicaciones que visualizan el mismo dataset:
 
@@ -128,12 +128,12 @@ Este dashboard forma parte de un proyecto integrado de tres aplicaciones que vis
 - **[Shiny App]([LINK-SHINY-AQUI])** — Para análisis estadístico detallado (R)
 - **D3.js App** — Este repositorio (JavaScript)
 
-## 👥 Autores
+##  Autores
 
 - **[Julian Camilo Cardenas Torres]** — [GitHub: @xzjulian0711](https://github.com/xzjulian0711)
 - **[Juan Fernando Bueno Torres]** — [GitHub: @JuanFer2004](https://github.com/JuanFer2004)
 
-## 📄 Licencia
+##  Licencia
 
 Este proyecto es de carácter académico, desarrollado para la **Fundación Universitaria Los Libertadores** como parte del curso de Herramientas y Visualización de Datos.
 
