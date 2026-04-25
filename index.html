@@ -10,12 +10,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-
+    <!-- D3.js (¡CRÍTICO!) -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <!-- TopoJSON para procesar el mapa -->
+    <script src="https://unpkg.com/topojson-client@3"></script>
+    
+    <!-- Nuestros estilos -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
             <h1 class="title">
-                <span class="emoji"></span>
+                <span class="emoji">🚗</span>
                 Accidentes de Transporte en Bogotá
             </h1>
-            <p class="subtitle">Análisis interactivo del periodo 2015–2025</p>
+            <p class="subtitle">Análisis interactivo 2015–2025</p>
             <p class="source">Fuente: Datos Abiertos de Bogotá</p>
         </div>
     </header>
@@ -26,7 +39,7 @@
         <p>Cargando datos...</p>
     </div>
 
-    <!-- CONTENIDO PRINCIPAL (se muestra cuando cargan los datos) -->
+    <!-- CONTENIDO PRINCIPAL -->
     <main id="main" class="container hidden">
 
         <!-- FILTROS -->
@@ -86,56 +99,56 @@
             </div>
         </section>
 
-<!-- INSIGHT 1: Evolución temporal -->
-<section class="insight">
-    <h2 class="insight-title"> Insight 1: La pandemia marcó una caída histórica, pero el rebote ha sido explosivo</h2>
-    <div id="chart-temporal" class="chart-container"></div>
-    <p class="insight-description">
-        En 2020 los accidentes cayeron drásticamente por las restricciones de movilidad. 
-        Desde 2022 la tendencia superó los niveles pre-pandemia y 2024 fue el pico histórico.
-    </p>
-</section>
+        <!-- INSIGHT 1: Evolución temporal -->
+        <section class="insight">
+            <h2 class="insight-title">📈 Insight 1: La pandemia marcó una caída histórica, pero el rebote ha sido explosivo</h2>
+            <div id="chart-temporal" class="chart-container"></div>
+            <p class="insight-description">
+                En 2020 los accidentes cayeron drásticamente por las restricciones de movilidad. 
+                Desde 2022 la tendencia superó los niveles pre-pandemia y 2024 fue el pico histórico.
+            </p>
+        </section>
 
-<!-- INSIGHT 2: Mapa de Bogotá -->
-<section class="insight">
-    <h2 class="insight-title"> Insight 2: Kennedy, Engativá y Suba concentran los accidentes en el sur-occidente de Bogotá</h2>
-    <div id="chart-mapa" class="chart-container"></div>
-    <p class="insight-description">
-        El mapa coroplético revela un patrón geográfico claro: las localidades del sur-occidente 
-        (Kennedy, Bosa, Ciudad Bolívar) y noroccidente (Engativá, Suba) concentran los accidentes,
-        mientras que zonas rurales como Sumapaz permanecen en tonos claros.
-    </p>
-</section>
+        <!-- INSIGHT 2: Mapa de Bogotá -->
+        <section class="insight">
+            <h2 class="insight-title">🗺️ Insight 2: Kennedy, Engativá y Suba concentran los accidentes en el sur-occidente de Bogotá</h2>
+            <div id="chart-mapa" class="chart-container"></div>
+            <p class="insight-description">
+                El mapa coroplético revela un patrón geográfico claro: las localidades del sur-occidente 
+                (Kennedy, Bosa, Ciudad Bolívar) y noroccidente (Engativá, Suba) concentran los accidentes,
+                mientras que zonas rurales como Sumapaz permanecen en tonos claros.
+            </p>
+        </section>
 
-<!-- INSIGHT 3: Tipos de accidente -->
-<section class="insight">
-    <h2 class="insight-title"> Insight 3: Choque y atropello representan casi el 90% de los accidentes</h2>
-    <div id="chart-tipos" class="chart-container"></div>
-    <p class="insight-description">
-        Dos categorías dominan: choques entre vehículos y atropellos de peatones.
-        La prevención debe focalizarse en estas dos dinámicas.
-    </p>
-</section>
+        <!-- INSIGHT 3: Tipos de accidente -->
+        <section class="insight">
+            <h2 class="insight-title">🚗 Insight 3: Choque y atropello representan casi el 90% de los accidentes</h2>
+            <div id="chart-tipos" class="chart-container"></div>
+            <p class="insight-description">
+                Dos categorías dominan: choques entre vehículos y atropellos de peatones.
+                La prevención debe focalizarse en estas dos dinámicas.
+            </p>
+        </section>
 
-<!-- INSIGHT 4: Pirámide poblacional -->
-<section class="insight">
-    <h2 class="insight-title"> Insight 4: Hombres adultos (29-59 años) concentran la mayoría de víctimas</h2>
-    <div id="chart-piramide" class="chart-container"></div>
-    <p class="insight-description">
-        La pirámide muestra dos patrones: marcada asimetría de género (~70% hombres) y 
-        concentración en población económicamente activa, revelando exposición vinculada a movilidad laboral.
-    </p>
-</section>
+        <!-- INSIGHT 4: Pirámide poblacional -->
+        <section class="insight">
+            <h2 class="insight-title">🏛️ Insight 4: Hombres adultos (29-59 años) concentran la mayoría de víctimas</h2>
+            <div id="chart-piramide" class="chart-container"></div>
+            <p class="insight-description">
+                La pirámide muestra dos patrones: marcada asimetría de género (~70% hombres) y 
+                concentración en población económicamente activa, revelando exposición vinculada a movilidad laboral.
+            </p>
+        </section>
 
-<!-- INSIGHT 5: Lollipop de causas -->
-<section class="insight">
-    <h2 class="insight-title"> Insight 5: La desobediencia de señales es la principal causa identificada</h2>
-    <div id="chart-causas" class="chart-container"></div>
-    <p class="insight-description">
-        Entre los casos con causa registrada, desobedecer señales lidera con gran diferencia,
-        seguido por exceso de velocidad. Ambas son causas prevenibles.
-    </p>
-</section>
+        <!-- INSIGHT 5: Lollipop de causas -->
+        <section class="insight">
+            <h2 class="insight-title">🍭 Insight 5: La desobediencia de señales es la principal causa identificada</h2>
+            <div id="chart-causas" class="chart-container"></div>
+            <p class="insight-description">
+                Entre los casos con causa registrada, desobedecer señales lidera con gran diferencia,
+                seguido por exceso de velocidad. Ambas son causas prevenibles.
+            </p>
+        </section>
 
     </main>
 
@@ -147,7 +160,7 @@
     <!-- Tooltip global -->
     <div id="tooltip" class="tooltip"></div>
 
-    <!-- Nuestro JavaScript -->
+    <!-- Nuestro JavaScript (al final, después del DOM) -->
     <script src="main.js"></script>
 </body>
 </html>
