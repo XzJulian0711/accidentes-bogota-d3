@@ -42,15 +42,15 @@ Este dashboard presenta un análisis visual interactivo de accidentes de transpo
 
 ##  Visualizaciones implementadas
 
-1. **Gráfico de línea y área temporal** — Muestra la evolución anual de accidentes con marcador de pandemia y puntos interactivos con tooltip. Tipo: *evolución temporal*.
+1. **Gráfico de área temporal** — Evolución anual de accidentes (2015-2025) con línea vertical destacando el inicio de la pandemia. Cubre el tipo *"evolución temporal"*.
 
-2. **Barras horizontales por localidad (paleta secuencial YlOrRd)** — Compara las 19 localidades con codificación de color por intensidad y animación al cargar. Tipo: *comparación entre categorías*.
+2. **Mapa coroplético de Bogotá** — Mapa interactivo con las 20 localidades coloreadas según intensidad de accidentes (paleta secuencial YlOrRd). Permite identificar visualmente las zonas críticas de la ciudad. Cubre el tipo *"comparaciones geográficas entre categorías"*.
 
-3. **Donut chart de tipos de accidente (paleta cualitativa)** — Distribución proporcional con agrupación automática de categorías pequeñas en "Otros", centro con total y leyenda dinámica. Tipo: *composición o proporciones*.
+3. **Donut chart de tipos de accidente** — Distribución proporcional con paleta cualitativa Set2 y agrupación inteligente de categorías menores en "Otros". Cubre el tipo *"composición o proporciones"*.
 
-4. **Perfil demográfico combinado (dos charts)** — Pie chart de sexo y barras verticales de ciclo vital con paleta secuencial purpura. Tipo: *distribución de variables*.
+4. **Pirámide poblacional** — Gráfico demográfico clásico con hombres a la izquierda (azul) y mujeres a la derecha (rosa), distribuidos por ciclo vital. Cubre el tipo *"distribución de variables demográficas"*.
 
-5. **Top 8 causas (barras horizontales)** — Ranking de causas con paleta secuencial roja y animación de entrada. Tipo: *relación entre variables*.
+5. **Lollipop chart de causas** — Top 8 causas identificadas con palitos rojos y círculos coloreados (paleta secuencial Reds). Alternativa elegante al gráfico de barras. Cubre el tipo *"relación entre variables"* (causa × frecuencia).
 
 Adicionalmente se incluyen **4 KPIs ejecutivos** (total de accidentes, año pico, localidad crítica, tipo predominante) que se actualizan dinámicamente con cada filtro aplicado.
 
