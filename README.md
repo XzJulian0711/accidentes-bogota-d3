@@ -54,11 +54,13 @@ Este dashboard presenta un análisis visual interactivo de accidentes de transpo
 
 Adicionalmente se incluyen **4 KPIs ejecutivos** (total de accidentes, año pico, localidad crítica, tipo predominante) que se actualizan dinámicamente con cada filtro aplicado.
 
-##  Tecnologías utilizadas
+## Tecnologías utilizadas
 
 - **Framework:** D3.js v7 (cargado desde CDN)
 - **Lenguajes:** JavaScript (ES6+), HTML5, CSS3
-- **Bibliotecas:** Ninguna adicional — solo D3 y JS puro
+- **Bibliotecas auxiliares:**
+  - `topojson-client` v3 — para procesar el TopoJSON de Bogotá y convertirlo a GeoJSON dentro del navegador
+- **Datos geográficos:** TopoJSON oficial de las 20 localidades de Bogotá
 - **Tipografía:** Inter (Google Fonts)
 - **Plataforma de despliegue:** GitHub Pages
 - **Control de versiones:** Git + GitHub
@@ -97,12 +99,13 @@ Luego abrir en el navegador: `http://localhost:8000/`
 accidentes-bogota-d3/
 ├── index.html                          # Estructura HTML del dashboard
 ├── styles.css                          # Estilos visuales y responsive
-├── main.js                             # Toda la lógica D3 y filtros
+├── main.js                             # Lógica D3, filtros y los 5 gráficos
 ├── .nojekyll                           # Desactiva Jekyll en GitHub Pages
 ├── .gitignore                          # Archivos ignorados por Git
 ├── README.md                           # Este archivo
 └── data/
-└── accidentes_bogota_limpio.csv    # Dataset procesado
+    ├── accidentes_bogota_limpio.csv    # Dataset procesado
+    └── bogota_localidades.json         # TopoJSON de las 20 localidades
 
 ##  Principios de diseño aplicados
 
