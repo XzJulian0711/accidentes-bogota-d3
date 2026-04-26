@@ -95,7 +95,7 @@ python -m http.server 8000
 Luego abrir en el navegador: `http://localhost:8000/`
 
 ##  Estructura del proyecto
-
+```
 accidentes-bogota-d3/
 ├── index.html                          # Estructura HTML del dashboard
 ├── styles.css                          # Estilos visuales y responsive
@@ -106,7 +106,7 @@ accidentes-bogota-d3/
 └── data/
     ├── accidentes_bogota_limpio.csv    # Dataset procesado
     └── bogota_localidades.json         # TopoJSON de las 20 localidades
-
+```
 ##  Principios de diseño aplicados
 
 - **Unidad 1 (Fundamentos):** elección cuidada del tipo de gráfico según la naturaleza de los datos — barras horizontales para rankings categóricos, líneas para series temporales, donut para composición, barras verticales para distribuciones ordinales.
